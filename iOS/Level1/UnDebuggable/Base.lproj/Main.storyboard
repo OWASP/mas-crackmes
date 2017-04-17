@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1212" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="TheLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6b-eK-qFh">
+                                <rect key="frame" x="36" y="53" width="303" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A Secret Is Found In The Hidden Label!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="BXL-q0-W6c">
+                                <rect key="frame" x="0.0" y="111" width="375" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ngb-gf-lSq">
+                                <rect key="frame" x="8" y="146.5" width="359" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gk0-Ug-8FK">
+                                <rect key="frame" x="8" y="196.5" width="359" height="30"/>
+                                <state key="normal" title="Verify"/>
+                                <connections>
+                                    <action selector="buttonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kHv-1S-Ydc"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="gk0-Ug-8FK" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="0wQ-4S-iT8"/>
+                            <constraint firstAttribute="trailing" secondItem="gk0-Ug-8FK" secondAttribute="trailing" constant="10" id="6a4-3g-hM9"/>
+                            <constraint firstItem="ngb-gf-lSq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="8SA-o4-ZV1"/>
+                            <constraint firstItem="ngb-gf-lSq" firstAttribute="top" secondItem="BXL-q0-W6c" secondAttribute="bottom" constant="15" id="A1a-Xm-eye"/>
+                            <constraint firstAttribute="trailing" secondItem="BXL-q0-W6c" secondAttribute="trailing" id="CX7-ml-a2q"/>
+                            <constraint firstItem="ngb-gf-lSq" firstAttribute="top" secondItem="BXL-q0-W6c" secondAttribute="bottom" constant="15" id="D8h-HQ-daT"/>
+                            <constraint firstItem="ngb-gf-lSq" firstAttribute="top" secondItem="BXL-q0-W6c" secondAttribute="bottom" constant="10" id="FB0-Zy-mtN"/>
+                            <constraint firstItem="BXL-q0-W6c" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="G7l-0j-Rdi"/>
+                            <constraint firstAttribute="trailing" secondItem="ngb-gf-lSq" secondAttribute="trailing" constant="8" id="Q1f-uH-wAS"/>
+                            <constraint firstItem="d6b-eK-qFh" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="ZZZ-1y-FII"/>
+                            <constraint firstItem="BXL-q0-W6c" firstAttribute="top" secondItem="d6b-eK-qFh" secondAttribute="bottom" constant="60" id="dnA-i2-QcN"/>
+                            <constraint firstItem="gk0-Ug-8FK" firstAttribute="top" secondItem="ngb-gf-lSq" secondAttribute="bottom" constant="20" id="jjo-Qw-ytZ"/>
+                            <constraint firstItem="BXL-q0-W6c" firstAttribute="top" secondItem="d6b-eK-qFh" secondAttribute="bottom" constant="50" id="r1Y-9y-CHF"/>
+                            <constraint firstItem="ngb-gf-lSq" firstAttribute="top" secondItem="BXL-q0-W6c" secondAttribute="bottom" constant="15" id="uDS-Qw-rl6"/>
+                            <constraint firstItem="ngb-gf-lSq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="vQ8-QI-7lL"/>
+                            <constraint firstAttribute="trailing" secondItem="gk0-Ug-8FK" secondAttribute="trailing" constant="8" id="wen-3w-NZQ"/>
+                            <constraint firstItem="ngb-gf-lSq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="wx6-IV-dcz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="Hint" destination="BXL-q0-W6c" id="a0W-10-ia9"/>
+                        <outlet property="bVerify" destination="gk0-Ug-8FK" id="ZOc-Vz-60c"/>
+                        <outlet property="theLabel" destination="d6b-eK-qFh" id="Hb9-ck-4VM"/>
+                        <outlet property="theTextField" destination="ngb-gf-lSq" id="OD3-zJ-KSX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="24.800000000000001" y="35.532233883058474"/>
+        </scene>
+    </scenes>
+</document>
