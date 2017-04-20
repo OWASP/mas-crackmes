@@ -30,16 +30,14 @@ public class MainActivity extends AppCompatActivity {
                 System.exit(0);
             }
         });
-
+        alertDialog.setCancelable(false);
         alertDialog.show();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         init();
 
-        /*
         if (RootDetection.checkRoot1()  || RootDetection.checkRoot2() || RootDetection.checkRoot3()) {
             showDialogAndExit("Root detected!");
         }
@@ -47,10 +45,8 @@ public class MainActivity extends AppCompatActivity {
         if (IntegrityCheck.isDebuggable(this.getApplicationContext())) {
             showDialogAndExit("App is debuggable!");
         }
-      */
 
         // Debugger detection
-
         new AsyncTask<Void, String, String>() {
 
             @Override
