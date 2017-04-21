@@ -25,6 +25,7 @@ public class MainActivity extends Activity {
             }
         });
 
+        alertDialog.setCancelable(false);
         alertDialog.show();
     }
 
