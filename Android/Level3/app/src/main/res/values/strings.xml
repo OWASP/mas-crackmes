@@ -1,3 +1,16 @@
 <resources>
-    <string name="app_name">Uncrackable 3</string>
+    <string name="app_name">Uncrackable Level 3</string>
+    <string name="action_settings">Uncrackable3</string>
+    <string name="edit_text">Enter the Secret String</string>
+    <string name="button_verify">Verify</string>
+    <string name="foo_crc">1234</string>
+
+    <string name="armeabi">3606080567</string>
+    <string name="mips">2038723071</string>
+    <string name="armeabi_v7a">2173229411</string>
+    <string name="arm64_v8a">157147525</string>
+    <string name="mips64">963663194</string>
+    <string name="x86">463987693</string>
+    <string name="x86_64">1677273584</string>
+
 </resources>
