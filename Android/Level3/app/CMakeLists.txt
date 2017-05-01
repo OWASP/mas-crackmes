@@ -37,3 +37,4 @@ target_link_libraries( # Specifies the target library.
 
                        # Links the log library to the target library.
                        ${log-lib} )
+
