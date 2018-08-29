@@ -3,6 +3,7 @@
 //
 
 #include <stdio.h>
+#include <malloc.h>
 #include <string.h>
 #include <unistd.h>
 #include <jni.h>
@@ -467,30 +468,30 @@ __inline int ( __attribute__((__always_inline__)) __sputc)(int _c , FILE *_p )
     int tmp___1 ;
 
     {
-        (_p->_w) --;
-        if (_p->_w >= 0) {
-            tmp = _p->_p;
-            (_p->_p) ++;
-            tmp___0 = (unsigned char )_c;
-            *tmp = tmp___0;
-            return ((int )tmp___0);
-        } else
-        if (_p->_w >= _p->_lbfsize) {
-            if ((int )((char )_c) != 10) {
-                tmp = _p->_p;
-                (_p->_p) ++;
-                tmp___0 = (unsigned char )_c;
-                *tmp = tmp___0;
-                return ((int )tmp___0);
-            } else {
-                tmp___1 = __swbuf(_c, _p);
-                return (tmp___1);
-            }
-        } else {
+//        (_p->_w) --;
+//        if (_p->_w >= 0) {
+//            tmp = _p->_p;
+//            (_p->_p) ++;
+//            tmp___0 = (unsigned char )_c;
+//            *tmp = tmp___0;
+//            return ((int )tmp___0);
+//        } else
+//        if (_p->_w >= _p->_lbfsize) {
+//            if ((int )((char )_c) != 10) {
+//                tmp = _p->_p;
+//                (_p->_p) ++;
+//                tmp___0 = (unsigned char )_c;
+//                *tmp = tmp___0;
+//                return ((int )tmp___0);
+//            } else {
+//                tmp___1 = __swbuf(_c, _p);
+//                return (tmp___1);
+//            }
+//        } else {
             tmp___1 = __swbuf(_c, _p);
             return (tmp___1);
         }
-    }
+//    }
 }
 int __attribute__((__visibility__("hidden")))  sub_22_2(void)
 {
