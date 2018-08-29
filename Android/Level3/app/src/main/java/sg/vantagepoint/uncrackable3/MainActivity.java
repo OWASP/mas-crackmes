@@ -28,13 +28,14 @@ public class MainActivity extends AppCompatActivity {
     private CodeCheck check;
 
     private native void init(byte[] xk);
+
     private native long baz();
 
     Map<String, Long> crc;
     static int tampered = 0;
 
     private void showDialog(String title) {
-        AlertDialog alertDialog = new AlertDialog.Builder(((Context)this)).create();
+        AlertDialog alertDialog = new AlertDialog.Builder(((Context) this)).create();
 
         alertDialog.setTitle(title);
         alertDialog.setMessage("This in unacceptable. The app is now going to exit.");
@@ -52,12 +53,12 @@ public class MainActivity extends AppCompatActivity {
     private void verifyLibs() {
 
         crc = new HashMap<String, Long>();
-
-        crc.put("armeabi", Long.parseLong(getResources().getString(R.string.armeabi)));
-        crc.put("mips", Long.parseLong(getResources().getString(R.string.mips)));
+        //mips, mips64 and armeabi are no longer supported with the new buildtools
+//        crc.put("armeabi", Long.parseLong(getResources().getString(R.string.armeabi)));
+//        crc.put("mips", Long.parseLong(getResources().getString(R.string.mips)));
         crc.put("armeabi-v7a", Long.parseLong(getResources().getString(R.string.armeabi_v7a)));
         crc.put("arm64-v8a", Long.parseLong(getResources().getString(R.string.arm64_v8a)));
-        crc.put("mips64", Long.parseLong(getResources().getString(R.string.mips64)));
+//        crc.put("mips64", Long.parseLong(getResources().getString(R.string.mips64)));
         crc.put("x86", Long.parseLong(getResources().getString(R.string.x86)));
         crc.put("x86_64", Long.parseLong(getResources().getString(R.string.x86_64)));
 
@@ -70,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
                 ZipEntry ze = zf.getEntry(filename);
 
-                Log.v(TAG,  "CRC[" + filename + "] = " + ze.getCrc());
+                Log.v(TAG, "CRC[" + filename + "] = " + ze.getCrc());
 
                 if (ze.getCrc() != entry.getValue()) {
                     tampered = 31337;
@@ -83,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
             String filename = "classes.dex";
             ZipEntry ze = zf.getEntry(filename);
 
-            Log.v(TAG,  "CRC[" + filename + "] = " + ze.getCrc());
+            Log.v(TAG, "CRC[" + filename + "] = " + ze.getCrc());
 
             if (ze.getCrc() != baz()) {
                 tampered = 31337;
@@ -122,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }.execute(null, null, null);
 
-        if (RootDetection.checkRoot1()  || RootDetection.checkRoot2() || RootDetection.checkRoot3() || IntegrityCheck.isDebuggable(this.getApplicationContext()) || tampered != 0) {
+        if (RootDetection.checkRoot1() || RootDetection.checkRoot2() || RootDetection.checkRoot3() || IntegrityCheck.isDebuggable(this.getApplicationContext()) || tampered != 0) {
             showDialog("Rooting or tampering detected.");
         }
 
@@ -134,14 +135,13 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void verify(View view) {
-        String v2 = ((EditText)this.findViewById(R.id.edit_text)).getText().toString();
-        AlertDialog alertDialog = new AlertDialog.Builder(((Context)this)).create();
+        String v2 = ((EditText) this.findViewById(R.id.edit_text)).getText().toString();
+        AlertDialog alertDialog = new AlertDialog.Builder(((Context) this)).create();
 
-        if(check.check_code(v2)) {
+        if (check.check_code(v2)) {
             alertDialog.setTitle("Success!");
             alertDialog.setMessage("This is the correct secret.");
-        }
-        else {
+        } else {
             alertDialog.setTitle("Nope...");
             alertDialog.setMessage("That\'s not it. Try again.");
         }
