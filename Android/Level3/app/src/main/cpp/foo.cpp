@@ -4274,17 +4274,17 @@ __attribute__((constructor)) static void _start(void) {
 
 
 void  __attribute__ ((visibility ("hidden"))) *monitor_pid(void *) {
-
-    int status;
-
-    waitpid(child_pid, &status, 0);
-
-    if (status != 11) {
-
-        // If this is a release build, the child will segfault (status 11). Otherwise, waitpid() should never return.
-
-        goodbye(); // Commit seppuku
-    }
+    //only works when target-sDK below 28, now removed
+//    int status;
+//
+//    waitpid(child_pid, &status, 0);
+//
+//    if (status != 11) {
+//
+//        // If this is a release build, the child will segfault (status 11). Otherwise, waitpid() should never return.
+//
+//        goodbye(); // Commit seppuku
+//    }
 
     pthread_exit(NULL);
 
@@ -4347,7 +4347,7 @@ JNIEXPORT void JNICALL Java_sg_vantagepoint_uncrackable3_MainActivity_init(JNIEn
 extern "C"
 JNIEXPORT jlong JNICALL Java_sg_vantagepoint_uncrackable3_MainActivity_baz(JNIEnv *env, jobject) {
 
-    return 2378563664;
+    return 1999877287;
 }
 
 extern "C"
