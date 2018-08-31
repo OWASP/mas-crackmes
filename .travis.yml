@@ -24,8 +24,8 @@ env:
    #noneed- API=25 EMU_FLAVOR=google_apis
    # API >= 26 don't have arm emulators, and Travis doesn't support x86
 
-# matrix:
-#   fast_finish: true # We can report success without waiting for these
+  matrix:
+    fast_finish: true # We can report success without waiting for these
 #   allow_failures:
     #noneed - env: API=23 EMU_FLAVOR=google_apis # has permission errors
     #noneed - env: API=25 EMU_FLAVOR=google_apis # has permission errors, emulator timeout
@@ -42,6 +42,13 @@ android:
   components:
     # installing tools to start, then use `sdkmanager` below to get the rest
     - tools
+    - build-tools-27.0.3
+    - android-28
+    # Additional components
+    - extra-google-google_play_services
+    - extra-google-m2repository
+    - extra-android-m2repository
+    - addon-google_apis-google-28
 
 licenses:
     - 'android-sdk-preview-license-.+'
@@ -55,7 +62,9 @@ install:
   - echo y | sdkmanager "tools" >/dev/null # A second time per Travis docs, gets latest versions
   - echo y | sdkmanager "build-tools;28.0.2" >/dev/null # Implicit gradle dependency - gradle drives changes
   - echo y | sdkmanager "platforms;android-$API" >/dev/null # We need the API of the emulator we will run
-  - echo y | sdkmanager "platforms;android-26" >/dev/null # We need the API of the current compileSdkVersion from gradle.properties
+  - echo y | sdkmanager "platforms;android-28" >/dev/null # We need the API of the current compileSdkVersion from gradle.properties
+  - echo y | sdkmanager "platforms;android-27" >/dev/null # We need the API of the current compileSdkVersion from gradle.properties
+  - echo y | sdkmanager "ndk-bundle" "We need android ndk bundle to compile number 2 and 3"
   - echo y | sdkmanager "extras;android;m2repository" >/dev/null
   - echo y | sdkmanager "system-images;android-$API;$EMU_FLAVOR;$ABI" >/dev/null # install our emulator
   - echo no | avdmanager create avd --force -n test -k "system-images;android-$API;$EMU_FLAVOR;$ABI" -c 10M
