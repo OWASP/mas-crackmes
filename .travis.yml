@@ -64,7 +64,7 @@ install:
   - echo y | sdkmanager "platforms;android-$API" >/dev/null # We need the API of the emulator we will run
   - echo y | sdkmanager "platforms;android-28" >/dev/null # We need the API of the current compileSdkVersion from gradle.properties
   - echo y | sdkmanager "platforms;android-27" >/dev/null # We need the API of the current compileSdkVersion from gradle.properties
-  - echo y | sdkmanager "ndk-bundle" "We need android ndk bundle to compile number 2 and 3"
+  - echo y | sdkmanager "ndk-bundle" >/dev/null #We need android ndk bundle to compile number 2 and 3
   - echo y | sdkmanager "extras;android;m2repository" >/dev/null
   - echo y | sdkmanager "system-images;android-$API;$EMU_FLAVOR;$ABI" >/dev/null # install our emulator
   - echo no | avdmanager create avd --force -n test -k "system-images;android-$API;$EMU_FLAVOR;$ABI" -c 10M
@@ -90,7 +90,3 @@ cache:
   directories:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
-
-# notifications:
-#   email:
-#     - flerda+ankidroid-continuous@gmail.com
