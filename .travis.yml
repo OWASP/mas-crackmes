@@ -24,9 +24,9 @@ env:
    #noneed- API=25 EMU_FLAVOR=google_apis
    # API >= 26 don't have arm emulators, and Travis doesn't support x86
 
-  matrix:
-    fast_finish: true # We can report success without waiting for these
-#   allow_failures:
+#   matrix:
+#     fast_finish: true # We can report success without waiting for these
+# #   allow_failures:
     #noneed - env: API=23 EMU_FLAVOR=google_apis # has permission errors
     #noneed - env: API=25 EMU_FLAVOR=google_apis # has permission errors, emulator timeout
 
@@ -42,13 +42,13 @@ android:
   components:
     # installing tools to start, then use `sdkmanager` below to get the rest
     - tools
-    - build-tools-27.0.3
-    - android-28
+    # - build-tools-27.0.3
+    # - android-28
     # Additional components
-    - extra-google-google_play_services
-    - extra-google-m2repository
-    - extra-android-m2repository
-    - addon-google_apis-google-28
+    # - extra-google-google_play_services
+    # - extra-google-m2repository
+    # - extra-android-m2repository
+    # - addon-google_apis-google-28
 
 licenses:
     - 'android-sdk-preview-license-.+'
