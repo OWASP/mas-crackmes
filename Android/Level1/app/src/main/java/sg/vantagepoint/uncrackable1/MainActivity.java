@@ -17,7 +17,7 @@ public class MainActivity extends Activity {
         AlertDialog alertDialog = new AlertDialog.Builder(((Context)this)).create();
 
         alertDialog.setTitle(title);
-        alertDialog.setMessage("This in unacceptable. The app is now going to exit.");
+        alertDialog.setMessage("This is unacceptable. The app is now going to exit.");
 
         alertDialog.setButton(alertDialog.BUTTON_NEUTRAL, "OK", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
