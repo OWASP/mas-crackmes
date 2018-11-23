@@ -16,7 +16,7 @@ int xyz(char *);
 
 @interface ViewController : UIViewController
 
-- (void)showAlertAndExit;
+- (void)showJailbreakAlert;
 - (void)xyz;
 
 @end
