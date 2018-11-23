@@ -8,7 +8,8 @@
 
 #import "ViewController.h"
 #import <CommonCrypto/CommonDigest.h>
-#include </usr/include/sys/ptrace.h>
+#import <dlfcn.h>
+#import <sys/types.h>
 #include <stdbool.h>
 #include <sys/types.h>
 #include <unistd.h>
@@ -47,7 +48,7 @@ int xyz(char *dst) {
     }
 
     while(1) {
-    
+        //TODO: REPLACE SIGNATURE VERIFICATION!
         header = dlinfo.dli_fbase;  // Pointer on the Mach-O header
         struct load_command * cmd = (struct load_command *)(header + 1); // First load command
         // Now iterate through load command
@@ -128,7 +129,11 @@ int xyz(char *dst) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ptrace(PT_DENY_ATTACH, 0, 0, 0);
+    typedef int (*ptrace_ptr_t)(int _request, pid_t _pid, caddr_t _addr, int _data);
+    void* handle = dlopen(0, RTLD_GLOBAL | RTLD_NOW);
+    ptrace_ptr_t ptrace_ptr = dlsym(handle, "ptrace");
+    ptrace_ptr(31, 0, 0, 0);
+    dlclose(handle);
     
     [NSThread detachNewThreadSelector:@selector(protectAgainstDebugger) toTarget:self withObject:nil];
     
@@ -152,7 +157,7 @@ int xyz(char *dst) {
         NSString *stringToBeWritten = @"ABCD";
         [stringToBeWritten writeToFile:@"/private/wut.txt" atomically:YES
                               encoding:NSUTF8StringEncoding error:&error];
-        if(error==nil){
+        if(error == nil){
             //Device is jailbroken
             isJailbroken = YES;
         } else {
@@ -163,6 +168,8 @@ int xyz(char *dst) {
             //Device is jailbroken
             isJailbroken = YES;
         }
+    }else{
+        isJailbroken = YES;
     }
     
     self.theLabel.numberOfLines = 1;
@@ -176,9 +183,9 @@ int xyz(char *dst) {
     
     NSLog(@"Code Signature: %s", signature);
     
-    // NSString *encryptedData = [AESCrypt encrypt:[NSString stringWithCString:"shakennotstirred" encoding:NSASCIIStringEncoding] password:[NSString stringWithCString:"e538c06835bec6870db99f0732c6d9bc" encoding:NSASCIIStringEncoding]];
+     NSString *encryptedData = [AESCrypt encrypt:[NSString stringWithCString:"shakennotstirred" encoding:NSASCIIStringEncoding] password:[NSString stringWithCString:"e538c06835bec6870db99f0732c6d9bc" encoding:NSASCIIStringEncoding]];
     
-    // NSLog(@"Encrypted: %@", encryptedData);
+    NSLog(@"Encrypted: %@", encryptedData);
     
     NSString *decrypted = [AESCrypt decrypt:[NSString stringWithCString:solution encoding:NSASCIIStringEncoding] password:[NSString stringWithCString:signature encoding:NSASCIIStringEncoding]];
     
