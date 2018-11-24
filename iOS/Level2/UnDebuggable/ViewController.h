@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 static char signature[33];
-static char solution[] = "VaoQcPb6CChCzVmU45BGEKcNMXAYXoZvegJHYO2zqJg=";
+static char solution[] = "i1yp3fWpbQTMlkZYg+U5SSyYsKHyDFhJwIXfwmwU2A8=";
 static bool isJailbroken;
 
 int xyz(char *);

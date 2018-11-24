@@ -40,22 +40,26 @@
 
 
 int xyz(char *dst) {
-    const struct mach_header * header;
+//    const struct mach_header * header;
     Dl_info dlinfo;
-
-    if (dladdr(xyz, &dlinfo) == 0 || dlinfo.dli_fbase == NULL) {
+//
+//
+//    int correctCheckSumForTextSection() {
+        const char * originalSignature = "098f66dd20ec8a1ceb355e36f2ea2ab5";
+        const struct mach_header * header;
+        //
+    if (dladdr(xyz, &dlinfo) == 0 || dlinfo.dli_fbase == NULL){
         NSLog(@" Error: Could not resolve symbol xyz");
-        [NSThread exit];
+        return 0; // Can't find symbol for main
     }
-
-    while(1) {
-        //TODO: REPLACE SIGNATURE VERIFICATION!
+    
+        //
         header = dlinfo.dli_fbase;  // Pointer on the Mach-O header
         struct load_command * cmd = (struct load_command *)(header + 1); // First load command
         // Now iterate through load command
         //to find __text section of __TEXT segment
-        for (uint32_t i = 0; cmd != NULL && i < header->ncmds; i++) {
-            if (cmd->cmd == LC_SEGMENT) {
+        for (uint32_t i = 0; i < header->ncmds; i++) {
+            if (cmd != NULL && cmd->cmd == LC_SEGMENT) {
                 // __TEXT load command is a LC_SEGMENT load command
                 struct segment_command * segment = (struct segment_command *)cmd;
                 if (!strcmp(segment->segname, "__TEXT")) {
@@ -78,20 +82,17 @@ int xyz(char *dst) {
                     // store the result in a string
                     // and compare to the original one
                     unsigned char digest[CC_MD5_DIGEST_LENGTH];
+                    char signature[2 * CC_MD5_DIGEST_LENGTH];            // will hold the signature
                     CC_MD5(textSectionPtr, textSectionSize, digest);     // calculate the signature
                     for (int i = 0; i < sizeof(digest); i++)             // fill signature
-                        sprintf(dst + (2 * i), "%02x", digest[i]);
-                
-                    // return strcmp(originalSignature, signature) == 0;    // verify signatures match
-                    
-                    return 0;
+                        sprintf(signature + (2 * i), "%02x", digest[i]);
+                    return strcmp(originalSignature, signature) == 0;
                 }
             }
             cmd = (struct load_command *)((uint8_t *)cmd + cmd->cmdsize);
         }
+        return 0;
     }
-    
-}
 
 - (void)protectAgainstDebugger {
     int                 junk;
@@ -130,13 +131,14 @@ int xyz(char *dst) {
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    typedef int (*ptrace_ptr_t)(int _request, pid_t _pid, caddr_t _addr, int _data);
-    void* handle = dlopen(0, RTLD_GLOBAL | RTLD_NOW);
-    ptrace_ptr_t ptrace_ptr = dlsym(handle, "ptrace");
-    ptrace_ptr(31, 0, 0, 0);
-    dlclose(handle);
-    
-    [NSThread detachNewThreadSelector:@selector(protectAgainstDebugger) toTarget:self withObject:nil];
+    //todo: uncomment below when ready
+//    typedef int (*ptrace_ptr_t)(int _request, pid_t _pid, caddr_t _addr, int _data);
+//    void* handle = dlopen(0, RTLD_GLOBAL | RTLD_NOW);
+//    ptrace_ptr_t ptrace_ptr = dlsym(handle, "ptrace");
+//    ptrace_ptr(31, 0, 0, 0);
+//    dlclose(handle);
+//
+//    [NSThread detachNewThreadSelector:@selector(protectAgainstDebugger) toTarget:self withObject:nil];
     
     isJailbroken = NO;
     
@@ -181,16 +183,16 @@ int xyz(char *dst) {
 - (IBAction)handleButtonClick:(id)sender {
     
     xyz(signature);
-    
+    //todo: comment away all logs again and update the stringWithCString below when you have an integrity check result
     NSLog(@"Code Signature: %s", signature);
     
      NSString *encryptedData = [AESCrypt encrypt:[NSString stringWithCString:"shakennotstirred" encoding:NSASCIIStringEncoding] password:[NSString stringWithCString:"e538c06835bec6870db99f0732c6d9bc" encoding:NSASCIIStringEncoding]];
     
     NSLog(@"Encrypted: %@", encryptedData);
     
-    NSString *decrypted = [AESCrypt decrypt:[NSString stringWithCString:solution encoding:NSASCIIStringEncoding] password:[NSString stringWithCString:signature encoding:NSASCIIStringEncoding]];
+    NSString *decrypted = [AESCrypt decrypt:[NSString stringWithCString:solution encoding:NSASCIIStringEncoding] password:[NSString stringWithCString:"e538c06835bec6870db99f0732c6d9bc" encoding:NSASCIIStringEncoding]];
     
-    // NSLog(@"Decrypted: %@", decrypted);
+    NSLog(@"Decrypted: %@", decrypted);
     
     UIAlertView *alert;
     
