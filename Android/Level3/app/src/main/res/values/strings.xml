@@ -7,10 +7,10 @@
 
     <string name="armeabi">1054637268</string>
     <string name="mips">3104746423</string>
-    <string name="armeabi_v7a">904804030</string>
+    <string name="armeabi_v7a">881998371</string>
     <string name="arm64_v8a">1608485481</string>
     <string name="mips64">1319538057</string>
-    <string name="x86">3522470005</string>
-    <string name="x86_64">762099589</string>
+    <string name="x86">1618896864</string>
+    <string name="x86_64">2856060114</string>
     <string name="thanks">With special thanks to Bernhard Mueller for creating the app. Now maintained by the MSTG project. Want more? Check the MSTG playground!</string>
 </resources>

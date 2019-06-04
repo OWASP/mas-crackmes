@@ -4347,7 +4347,7 @@ JNIEXPORT void JNICALL Java_sg_vantagepoint_uncrackable3_MainActivity_init(JNIEn
 extern "C"
 JNIEXPORT jlong JNICALL Java_sg_vantagepoint_uncrackable3_MainActivity_baz(JNIEnv *env, jobject) {
 
-    return 192165170;
+    return 25235683;
 }
 
 extern "C"
