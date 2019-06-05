@@ -1,2 +1,4 @@
 .DS_Store
-**/app/build
+**/**/app/build
+**/**/.idea
+**/**/app/release
