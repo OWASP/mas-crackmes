@@ -1,4 +1,5 @@
 .DS_Store
-**/**/app/build
-**/**/.idea
-**/**/app/release
+**/**/app/build/
+**/**/.idea/
+**/**/app/release/
+.idea
