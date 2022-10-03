@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/commjoen/uncrackable_app.svg?branch=master)](https://travis-ci.org/commjoen/uncrackable_app)
 
-<img width="180px" align="right" style="float: right;" src="https://raw.githubusercontent.com/OWASP/owasp-mastg/master/Document/Images/Other/uncrackable-logo.png">
+<img width="180px" align="right" style="float: right; border-radius: 5px;" src="https://raw.githubusercontent.com/OWASP/owasp-mastg/master/Document/Images/Other/uncrackable-logo.png">
 
 This repo contains the source code for the [OWASP MAS Crackmes](https://mas.owasp.org/crackmes/).
 
