@@ -1,6 +1,11 @@
-# MSTG Crackmes
+# OWASP MAS Crackmes
+
 [![Build Status](https://travis-ci.org/commjoen/uncrackable_app.svg?branch=master)](https://travis-ci.org/commjoen/uncrackable_app)
 
-This is the repo where the WASP MSTG its crackmes sourcecode is stored. If you go here, you will spoil the fun for cracking the actual crackme's ;-).
+<img width="180px" align="right" style="float: right;" src="https://raw.githubusercontent.com/OWASP/owasp-mastg/master/Document/Images/Other/uncrackable-logo.png">
 
-The crackmes are actively maintained at this point in time. If you cannot start them on your device, feel free to file an issue or do a PR. Note that the [OWASP Hacking Playground](https://github.com/OWASP/MSTG-Hacking-Playground) contains more testcases.
+This repo contains the source code for the [OWASP MAS Crackmes](https://mas.owasp.org/crackmes/).
+
+Welcome to the MAS Crackmes aka. UnCrackable Apps, a collection of mobile reverse engineering challenges. These challenges are used as examples throughout the OWASP MASTG. Of course, you can also solve them for fun.
+
+⚠️ **SPOLER ALERT:** Use this repo responsibly. If you read the source code, you will spoil the fun you'll have _cracking_ the actual crackmes ;-)
